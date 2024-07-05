@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import axios from 'axios'
-import { router } from 'expo-router'
+import { Link, router } from 'expo-router'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const register = () => {
@@ -37,7 +37,7 @@ const register = () => {
           fontSize: 30,
           fontWeight: 600
         }}>Welcome!</Text>
-        <Text style={{ color: "#fff", fontSize: 15 }}>Create an account to join stford</Text>
+        <Text style={{ color: "#fff", fontSize: 15 }}>Create an account to join ST Ford Alternator</Text>
         <View style={{ marginTop: 20 }}>
           <View>
             <Text style={styles.text}>Name</Text>
@@ -45,19 +45,23 @@ const register = () => {
           </View>
           <View>
             <Text style={styles.text}>Email</Text>
-            <TextInput style={styles.input} placeholderTextColor={"#fff"} placeholder='example@gmail.com' onChangeText={email => setEmail(email)} />
+            <TextInput style={styles.input} inputMode='email' keyboardType='email-address' placeholderTextColor={"#fff"} placeholder='example@gmail.com' onChangeText={email => setEmail(email)} />
           </View>
           <View>
             <Text style={styles.text}>Mobile Number</Text>
-            <TextInput style={styles.input} maxLength={10} keyboardType='number-pad' placeholderTextColor={"#fff"} placeholder='Phone number' onChangeText={phone => setPhoneNo(phone)} />
+            <TextInput style={styles.input} maxLength={11} keyboardType='number-pad' placeholderTextColor={"#fff"} placeholder='Phone number' onChangeText={phone => setPhoneNo(phone)} />
           </View>
           <View>
             <Text style={styles.text}>Password</Text>
-            <TextInput style={styles.input} placeholderTextColor={"#fff"} placeholder='Create your password' onChangeText={password => setPassword(password)} />
+            <TextInput style={styles.input} keyboardType='hidden-password' secureTextEntry={true} inputMode placeholderTextColor={"#fff"} placeholder='Create your password' onChangeText={password => setPassword(password)} />
           </View>
           <TouchableOpacity onPress={register} style={styles.button}>
-            <Text style={{ color: "#C80036", fontWeight: 600 }}>CREATE</Text>
+            <Text style={{ color: "#C80036", fontWeight: 600, textAlign: "center" }}>Create Your Account</Text>
           </TouchableOpacity>
+          <Text style={{ color: "white", marginTop: 20, fontSize: 14 }}>
+            Have an account?
+            <Link href={"/users/login"} style={{ textDecorationLine: "underline" }}> Login</Link>
+          </Text>
         </View>
       </View>
     </>
@@ -69,13 +73,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#C80036',
     padding: 20,
-    paddingTop: 20
+    paddingTop: 34
   },
   text: {
     color: "#fff"
   },
   input: {
-    backgroundColor: "#94032a",
+    backgroundColor: "#a3032e",
     borderRadius: 5,
     paddingTop: 10,
     paddingBottom: 10,
@@ -86,9 +90,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#fff",
-    padding: 10,
+    paddingTop: 15,
+    paddingBottom: 15,
     borderRadius: 8,
-    width: "23%",
+    textAlign: 'center',
     marginTop: 10
   },
 })

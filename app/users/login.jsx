@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, Image } from 'react-native'
 import React, { useState } from 'react'
 import axios from 'axios'
-import { router } from 'expo-router'
+import { Link, router } from 'expo-router'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const login = () => {
@@ -32,19 +32,23 @@ const login = () => {
           fontSize: 30,
           fontWeight: 600,
         }}>Welcome Back!</Text>
-        <Text style={{ color: "#fff", fontSize: 15 }}>Login to your account in stford!</Text>
+        <Text style={{ color: "#fff", fontSize: 15 }}>Login to your account in ST Ford Alternator!</Text>
         <View style={{ marginTop: 20 }}>
           <View>
             <Text style={styles.text}>Email</Text>
-            <TextInput style={styles.input} placeholderTextColor={"#fff"} placeholder='example@gmail.com' onChangeText={email => setEmail(email)} />
+            <TextInput style={styles.input} inputMode='email' placeholderTextColor={"#fff"} placeholder='example@gmail.com' onChangeText={email => setEmail(email)} />
           </View>
           <View>
             <Text style={styles.text}>Password</Text>
-            <TextInput style={styles.input} placeholderTextColor={"#fff"} placeholder='Enter your password' onChangeText={password => setPassword(password)} />
+            <TextInput style={styles.input} keyboardType='hidden-password' secureTextEntry={true} placeholderTextColor={"#fff"} placeholder='Password' onChangeText={password => setPassword(password)} />
           </View>
           <TouchableOpacity onPress={login} style={styles.button}>
-            <Text style={{ color: "#C80036", fontWeight: 600 }}>LOGIN</Text>
+            <Text style={{ textAlign: "center", color: "#C80036", fontWeight: 600 }}>LOGIN</Text>
           </TouchableOpacity>
+          <Text style={{ color: "white", marginTop: 20, fontSize: 14 }}>
+            Don't have an account?
+            <Link href={"/users/register"} style={{ textDecorationLine: "underline" }}> Register</Link>
+          </Text>
         </View>
       </View>
     </>
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
     color: "#fff"
   },
   input: {
-    backgroundColor: "#94032a",
+    backgroundColor: "#a3032e",
     borderRadius: 5,
     paddingTop: 10,
     paddingBottom: 10,
@@ -73,9 +77,9 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 8,
-    width: "20%",
+    padding: 15,
+    borderRadius: 6,
+    width: "100%",
     marginTop: 10
   },
 })
