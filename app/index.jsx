@@ -42,7 +42,7 @@ const Index = () => {
                     </Link>
                     <Text style={{ color: "white", fontSize: 15 }}>Validate a ST Ford alternator ?</Text>
                     <Link href={token === null ? "/users/login" : "motors/validation"} style={styles.outline}>
-                        <Text style={{ fontSize: 15, color: "#fff", fontWeight: 500 }}>Validate an engine</Text>
+                        <Text style={{ fontSize: 15, color: "#fff", fontWeight: 500 }}>Validate an Alternator</Text>
                     </Link>
                 </View>
             </View>
